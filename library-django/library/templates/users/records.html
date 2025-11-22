@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records</title>
+</head>
+
+<body>
+    {%if user.is_authenticated and user.is_active %}
+    {% for record in records %}
+    <div style="text-align: center; margin-bottom: 150px;">
+        <h1>record ID: {{record.borrow_record_id}}</h1>
+        <h1>Book : {{record.book_id}}</h1>
+        <h2>Borrow Date: {{record.borrow_date}}</h2>
+        <h3>Due Date: {{record.due_date}}</h3>
+        <h6>Return status : {{record.is_returned}}</h6>
+    </div>
+    {% endfor %}
+
+    {% endif %}
+</body>
+
+</html>
