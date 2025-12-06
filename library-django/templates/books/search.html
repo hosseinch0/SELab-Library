@@ -1,0 +1,35 @@
+{% load static %}
+
+<div class="container mt-4">
+
+    <h2>Search Books</h2>
+
+    <form method="get" action="">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by title, author, or ISBN..." name="q"
+                value="{{ query }}">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+
+    {% if query %}
+    <h4>Results for: "{{ query }}"</h4>
+    <hr>
+
+    {% if results %}
+    <ul class="list-group">
+        {% for book in results %}
+        <li class="list-group-item">
+            <strong>{{ book.title }}</strong><br>
+            Author: {{ book.author }}<br>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No matching books found.</p>
+    {% endif %}
+    {% else %}
+    <p>Type something above to start searching.</p>
+    {% endif %}
+
+</div>

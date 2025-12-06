@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import RecordsModel, BookModel
+from .models import RecordsModel, BookModel, FineModel
 from .forms import BorrowForm
 
 
@@ -44,3 +44,12 @@ def borrow_book(request):
         form = BorrowForm()
 
     return render(request, 'users/borrow_book.html', {"form": form})
+
+
+def fine_records(request):
+    if request.method == "GET":
+        if request.user.is_authenticated:
+            fines = FineModel.objects.filter(record_id__user_id=request.user)
+            return render(request, 'users/fines.html', {'fines': fines})
+        else:
+            return redirect('login')

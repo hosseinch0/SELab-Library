@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1 style="margin-bottom: 150px;">My Fines</h1>
+        {% for fine in fines %}
+        <h2>Username: {{fine.record_id.user_id.username}}</h2>
+        <h3>Fine id: {{fine.fine_id}}</h3>
+        <h3>Borrow Record: {{fine.record_id.borrow_record_id}}</h3>
+        <h3>Due Date: {{fine.record_id.due_date}}</h3>
+        <h4>Return Date: {{fine.record_id.return_date}}</h4>
+        <h3>Fine Amount: {{fine.amount}}</h3>
+        <h3>issued_date: {{fine.issued_date}}</h3>
+        {% endfor %}
+
+    </div>
+</body>
+
+</html>

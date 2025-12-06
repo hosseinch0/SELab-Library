@@ -5,9 +5,9 @@ from .models import BookModel, CategoryModel
 
 class BookAdminModel(admin.ModelAdmin):
     list_display = ['title', 'total_copies',
-                    'language', 'section', 'row', 'column',]
-    list_filter = ['language', 'publisher']
-    readonly_fields = ['book_id', 'total_copies',]
+                    'category', 'section', 'row', 'column',]
+    list_filter = ['language', "category"]
+    readonly_fields = ['book_id',]
 
 
 class CategoryAdminModel(admin.ModelAdmin):
